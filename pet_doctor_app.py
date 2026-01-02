@@ -28,7 +28,7 @@ st.set_page_config(page_title="AI 宠物健康助手", page_icon="🐾", layout=
 # --- 2. 获取 API Key (从 Secrets 安全读取) ---
 try:
     # 尝试从 Streamlit Secrets 读取名为 "API_KEY" 的密钥
-    api_key = st.secrets["sk-e6e07d9befb14961bfa38ae0d280a40a"]
+    api_key = st.secrets["API_KEY"]
 except FileNotFoundError:
     st.error("❌ 未找到密钥配置！请在本地创建 .streamlit/secrets.toml 或在云端设置 Secrets。")
     st.stop()
@@ -104,3 +104,4 @@ if prompt := st.chat_input("我家猫咪今天早上吐了黄水..."):
             st.session_state.messages.append({"role": "assistant", "content": full_response})
         except Exception as e:
             st.error(f"连接繁忙，请稍后再试: {e}")
+
